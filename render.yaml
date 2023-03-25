@@ -4,9 +4,5 @@
     repo: https://github.com/shilishalopez/faceRecognition.git
     buildCommand: npm run build
     staticPublishPath: ./build
-    envVars:
-      - key: REACT_APP
-        fromService:
-          name: face-recognition-backend
-          type: web
-          property: host
+
+
