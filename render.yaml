@@ -1,23 +1,16 @@
-  # A static site
-    name: my blog
+ - type: web
     env: static
-    # buildCommand: yarn build
+    name: face-recognition
+    repo: https://github.com/shilishalopez/faceRecognition.git
     buildCommand: npm run build
     staticPublishPath: ./build
-    pullRequestPreviewsEnabled: true # optional
-    buildFilter:
-      paths:
-      - src/**/*.js
-      ignoredPaths:
-      - src/**/*.test.js
-    headers:
-      - path: /*
-        name: X-Frame-Options
-        value: sameorigin
     routes:
-      - type: redirect
-        source: /old
-        destination: /new
       - type: rewrite
-        source: /a/*
-        destination: /a
+        source: /*
+        destination: /index.html
+    envVars:
+      - key: REACT_APP_GRAPHQL_HOST
+        fromService:
+          name: face-recognition-backend
+          type: web
+          property: host
